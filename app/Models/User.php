@@ -45,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // app/Models/User.php
+    public function gerobak()
+    {
+        // Satu User (Mitra) punya Satu Gerobak
+        return $this->hasOne(Gerobak::class);
+    }
+
+    // Helper untuk cek role
+    public function isMitra() { return $this->role === 'mitra'; }
+    public function isAdmin() { return $this->role === 'admin'; }
 }
